@@ -1,0 +1,6 @@
+.row{
+    border: 1px dashed black;
+    min-height: 50px;
+    padding: 10px;
+    margin: 5px;
+}

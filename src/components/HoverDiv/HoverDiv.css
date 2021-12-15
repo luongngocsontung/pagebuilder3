@@ -1,0 +1,5 @@
+#hoverDiv{
+    position: absolute;
+    border: 2px solid rgb(67, 226, 231);
+    pointer-events: none;
+}

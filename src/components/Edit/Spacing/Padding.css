@@ -1,0 +1,22 @@
+/* Delete arrow from input type number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.paddingInput{
+    border: 1px solid gray;
+    width: 100%;
+    height: 30px;
+}
+
+.paddingSelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid gray;
+    text-align: center;
+    background-color: rgb(221, 220, 220);
+    height: 100%;
+    width: 100%;
+  }

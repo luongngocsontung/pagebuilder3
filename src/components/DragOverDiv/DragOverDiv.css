@@ -1,0 +1,5 @@
+.dragOver{
+    position: absolute;
+    width: 2px;
+    background-color: black;
+}
