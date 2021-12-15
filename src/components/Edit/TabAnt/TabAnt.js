@@ -102,17 +102,17 @@ export default function TabAnt({ id }) {
                     <Panel header="Overall" key='1'>
                         <Color value={state.style.color} onColorChange={handleColorChange} />
                     </Panel>
-                    {/* <Panel header="Spacing" key='2'>
+                    <Panel header="Spacing" key='2'>
                         <Padding value={state.style} onPaddingChange={handlePaddingChange} />
                         <Margin value={state.style} onMarginChange={handleMarginChange} />
-                    </Panel> */}
+                    </Panel>
                     <Panel header="Typography" key='3'>
                         <FontSize value={state.style.fontSize} onFontSizeChange={handleFontSizeChange} />
                         <TextAlign onTextAlignChange={handleTextAlignChange} />
                     </Panel>
-                    {/* <Panel header="Background" key='4'>
+                    <Panel header="Background" key='4'>
                         <BackgroundColor value={state.style.backgroundColor} onBackgroundColorChange={handleBackgroundColorChange} />
-                    </Panel> */}
+                    </Panel>
                 </Collapse>
             </TabPane>
         </Tabs>
