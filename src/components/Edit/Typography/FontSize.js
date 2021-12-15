@@ -2,13 +2,16 @@
 import { Col, Slider } from 'antd'
 import React from 'react'
 import { useState } from 'react/cjs/react.development'
+import getElement from '../../../controller/getElement';
 
-export default function FontSize({ value, onFontSizeChange }) {
-    const [size, setSize] = useState(value);
+export default function FontSize({ id }) {
+    const element = getElement(id)
+    const [size, setSize] = useState(element.state.style.fontSize);
 
     const handleFontSizeChange = e => {
-        setSize(e+'px');
-        onFontSizeChange(e)
+        setSize(e + 'px');
+        const newStyle = { ...element.state.style, fontSize: e + 'px' };
+        element.updateState({ style: newStyle });
     }
 
     return (

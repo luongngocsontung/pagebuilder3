@@ -1,8 +1,16 @@
 import { Button, Col, Row } from 'antd'
 import { AlignLeftOutlined, AlignCenterOutlined, AlignRightOutlined, MenuOutlined } from '@ant-design/icons'
 import React from 'react'
+import getElement from '../../../controller/getElement'
 
-export default function TextAlign({ onTextAlignChange }) {
+export default function TextAlign({ id }) {
+    const element = getElement(id);
+
+    const onTextAlignChange = e => {
+        const newStyle = { ...element.state.style, textAlign: e.target.id };
+        element.updateState({ style: newStyle });
+    }
+
     return (
         <>
             <Col>Text Alignment</Col>
@@ -11,7 +19,7 @@ export default function TextAlign({ onTextAlignChange }) {
                     <Button
                         onClick={onTextAlignChange}
                         id="start"
-                        style={{ width: "100%"}}
+                        style={{ width: "100%" }}
                     >
                         <AlignLeftOutlined style={{ pointerEvents: 'none' }} />
                     </Button>

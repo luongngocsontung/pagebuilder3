@@ -1,35 +1,42 @@
 import { Col, Layout, Row } from 'antd'
 import { useState } from 'react/cjs/react.development';
+import getElement from '../../../controller/getElement';
 import './Padding.css';
 
-export default function Margin({ onMarginChange, value }) {
-    const [top, setTop] = useState(value.marginTop);
-    const [left, setLeft] = useState(value.marginLeft);
-    const [right, setRight] = useState(value.marginRight);
-    const [bottom, setBottom] = useState(value.marginBottom);
+export default function Margin({ id }) {
+    const element = getElement(id);
+    const [top, setTop] = useState(element.state.style.marginTop);
+    const [left, setLeft] = useState(element.state.style.marginLeft);
+    const [right, setRight] = useState(element.state.style.marginRight);
+    const [bottom, setBottom] = useState(element.state.style.marginBottom);
 
     const handleMarginChange = e => {
-        onMarginChange(e);
         let value = e.target.value;
         let newStyle = null;
         if (!value.toString().length)
             value = 0;
+
         switch (e.target.id) {
-            case 'paddingTop':
-                setTop(e.target.value + 'px')
+            case 'marginTop':
+                newStyle = { ...element.state.style, marginTop: value + 'px' }
+                setTop(value+'px')
                 break;
-            case 'paddingLeft':
-                setLeft(e.target.value + 'px')
+            case 'marginLeft':
+                newStyle = { ...element.state.style, marginLeft: value + 'px' }
+                setLeft(value+'px')
                 break;
-            case 'paddingRight':
-                setRight(e.target.value + 'px')
+            case 'marginRight':
+                newStyle = { ...element.state.style, marginRight: value + 'px' }
+                setRight(value+'px')
                 break;
-            case 'paddingBottom':
-                setBottom(e.target.value + 'px')
+            case 'marginBottom':
+                newStyle = { ...element.state.style, marginBottom: value + 'px' }
+                setBottom(value+'px')
                 break;
             default:
                 break;
         }
+        element.updateState({ style: newStyle });
     }
     return (
         <>

@@ -1,13 +1,16 @@
 import { Col, Input } from 'antd'
 import React from 'react'
 import { useState } from 'react/cjs/react.development'
+import getElement from '../../../controller/getElement'
 
-export default function BackgroundColor({ value, onBackgroundColorChange }) {
-    const [color, setColor] = useState(value)
+export default function BackgroundColor({ id }) {
+    const element = getElement(id)
+    const [color, setColor] = useState(element.state.style.backgroundColor)
 
     const handleBackgroundColorChange = e => {
         setColor(e.target.value);
-        onBackgroundColorChange(e);
+        const newStyle = { ...element.state.style, backgroundColor: e.target.value };
+        element.updateState({ style: newStyle });
     }
 
     return (

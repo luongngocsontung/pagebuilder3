@@ -1,35 +1,42 @@
 import { Col, Layout, Row } from 'antd'
 import { useState } from 'react/cjs/react.development'
+import getElement from '../../../controller/getElement';
 import './Padding.css'
 
-export default function Padding({ onPaddingChange, value }) {
-    const [top, setTop] = useState(value.paddingTop);
-    const [left, setLeft] = useState(value.paddingLeft);
-    const [right, setRight] = useState(value.paddingRight);
-    const [bottom, setBottom] = useState(value.paddingBottom);
+export default function Padding({ id }) {
+    const element = getElement(id);
+    const [top, setTop] = useState(element.state.style.paddingTop);
+    const [left, setLeft] = useState(element.state.style.paddingLeft);
+    const [right, setRight] = useState(element.state.style.paddingRight);
+    const [bottom, setBottom] = useState(element.state.style.paddingBottom);
 
     const handlePaddingChange = e => {
-        onPaddingChange(e);
         let value = e.target.value;
         let newStyle = null;
         if (!value.toString().length)
             value = 0;
+
         switch (e.target.id) {
             case 'paddingTop':
-                setTop(e.target.value+'px')
+                newStyle = { ...element.state.style, paddingTop: value + 'px' }
+                setTop(value+'px')
                 break;
             case 'paddingLeft':
-                setLeft(e.target.value+'px')
+                newStyle = { ...element.state.style, paddingLeft: value + 'px' }
+                setLeft(value+'px')
                 break;
             case 'paddingRight':
-                setRight(e.target.value+'px')
+                newStyle = { ...element.state.style, paddingRight: value + 'px' }
+                setRight(value+'px')
                 break;
             case 'paddingBottom':
-                setBottom(e.target.value+'px')
+                newStyle = { ...element.state.style, paddingBottom: value + 'px' }
+                setBottom(value+'px')
                 break;
             default:
                 break;
         }
+        element.updateState({ style: newStyle });
     }
 
     return (
