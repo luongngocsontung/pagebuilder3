@@ -2,7 +2,7 @@ import { Button, Col, Row } from 'antd'
 import { AlignLeftOutlined, AlignCenterOutlined, AlignRightOutlined, MenuOutlined } from '@ant-design/icons'
 import React from 'react'
 
-export default function TextAlign({ value, onTextAlignChange }) {
+export default function TextAlign({ onTextAlignChange }) {
     return (
         <>
             <Col>Text Alignment</Col>

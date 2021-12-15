@@ -2,7 +2,6 @@ import { Col, Layout, Row } from 'antd'
 import './Padding.css'
 
 export default function Padding({ onPaddingChange, value }) {
-
     return (
         <>
             <Col>Padding</Col>

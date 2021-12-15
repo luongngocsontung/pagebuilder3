@@ -151,6 +151,7 @@ export default function RenderUI({ id, ...props }) {
     })
     return (
         <Component
+            id={state.id}
             data={state}
             value={state.childrenId.length ? null : state.value}
             onDragStart={drag}
