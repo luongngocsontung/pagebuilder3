@@ -13,12 +13,12 @@ const { Panel } = Collapse;
 
 
 export default function TabAnt({ id }) {
-    const { state, setState } = useSubscription(getElement(id))
+    const element = getElement(id);
 
     // Color
     const handleColorChange = e => {
-        const newStyle = { ...state.style, color: e.target.value }
-        setState({ style: newStyle });
+        const newStyle = { ...element.state.style, color: e.target.value }
+        element.updateState({ style: newStyle });
     }
 
     //Padding
@@ -30,21 +30,21 @@ export default function TabAnt({ id }) {
 
         switch (e.target.id) {
             case 'paddingTop':
-                newStyle = { ...state.style, paddingTop: value + 'px' }
+                newStyle = { ...element.state.style, paddingTop: value + 'px' }
                 break;
             case 'paddingLeft':
-                newStyle = { ...state.style, paddingLeft: value + 'px' }
+                newStyle = { ...element.state.style, paddingLeft: value + 'px' }
                 break;
             case 'paddingRight':
-                newStyle = { ...state.style, paddingRight: value + 'px' }
+                newStyle = { ...element.state.style, paddingRight: value + 'px' }
                 break;
             case 'paddingBottom':
-                newStyle = { ...state.style, paddingBottom: value + 'px' }
+                newStyle = { ...element.state.style, paddingBottom: value + 'px' }
                 break;
             default:
                 break;
         }
-        setState({ style: newStyle });
+        element.updateState({ style: newStyle });
     }
 
     //Margin
@@ -56,39 +56,39 @@ export default function TabAnt({ id }) {
 
         switch (e.target.id) {
             case 'marginTop':
-                newStyle = { ...state.style, marginTop: value + 'px' }
+                newStyle = { ...element.state.style, marginTop: value + 'px' }
                 break;
             case 'marginLeft':
-                newStyle = { ...state.style, marginLeft: value + 'px' }
+                newStyle = { ...element.state.style, marginLeft: value + 'px' }
                 break;
             case 'marginRight':
-                newStyle = { ...state.style, marginRight: value + 'px' }
+                newStyle = { ...element.state.style, marginRight: value + 'px' }
                 break;
             case 'marginBottom':
-                newStyle = { ...state.style, marginBottom: value + 'px' }
+                newStyle = { ...element.state.style, marginBottom: value + 'px' }
                 break;
             default:
                 break;
         }
-        setState({ style: newStyle });
+        element.updateState({ style: newStyle });
     }
 
     //Font Size
     const handleFontSizeChange = e => {
-        const newStyle = { ...state.style, fontSize: e + 'px' };
-        setState({ style: newStyle });
+        const newStyle = { ...element.state.style, fontSize: e + 'px' };
+        element.updateState({ style: newStyle });
     }
 
     //Text Align
     const handleTextAlignChange = e => {
-        const newStyle = { ...state.style, textAlign: e.target.id };
-        setState({ style: newStyle });
+        const newStyle = { ...element.state.style, textAlign: e.target.id };
+        element.updateState({ style: newStyle });
     }
 
     //Background Color
     const handleBackgroundColorChange = e => {
-        const newStyle = { ...state.style, backgroundColor: e.target.value };
-        setState({ style: newStyle });
+        const newStyle = { ...element.state.style, backgroundColor: e.target.value };
+        element.updateState({ style: newStyle });
     }
 
     return (
@@ -100,19 +100,19 @@ export default function TabAnt({ id }) {
             <TabPane tab="Styling" key='2'>
                 <Collapse defaultActiveKey={['1', '2', '3', '4']}>
                     <Panel header="Overall" key='1'>
-                        <Color value={state.style.color} onColorChange={handleColorChange} />
+                        <Color value={element.state.style.color} onColorChange={handleColorChange} />
                     </Panel>
-                    {/* <Panel header="Spacing" key='2'>
-                        <Padding value={state.style} onPaddingChange={handlePaddingChange} />
-                        <Margin value={state.style} onMarginChange={handleMarginChange} />
-                    </Panel> */}
+                    <Panel header="Spacing" key='2'>
+                        <Padding value={element.state.style} onPaddingChange={handlePaddingChange} />
+                        <Margin value={element.state.style} onMarginChange={handleMarginChange} />
+                    </Panel>
                     <Panel header="Typography" key='3'>
-                        <FontSize value={state.style.fontSize} onFontSizeChange={handleFontSizeChange} />
+                        <FontSize value={element.state.style.fontSize} onFontSizeChange={handleFontSizeChange} />
                         <TextAlign onTextAlignChange={handleTextAlignChange} />
                     </Panel>
-                    {/* <Panel header="Background" key='4'>
-                        <BackgroundColor value={state.style.backgroundColor} onBackgroundColorChange={handleBackgroundColorChange} />
-                    </Panel> */}
+                    <Panel header="Background" key='4'>
+                        <BackgroundColor value={element.state.style.backgroundColor} onBackgroundColorChange={handleBackgroundColorChange} />
+                    </Panel>
                 </Collapse>
             </TabPane>
         </Tabs>

@@ -1,8 +1,36 @@
 import { Col, Layout, Row } from 'antd'
+import { useState } from 'react/cjs/react.development';
 import './Padding.css';
 
 export default function Margin({ onMarginChange, value }) {
+    const [top, setTop] = useState(value.marginTop);
+    const [left, setLeft] = useState(value.marginLeft);
+    const [right, setRight] = useState(value.marginRight);
+    const [bottom, setBottom] = useState(value.marginBottom);
 
+    const handleMarginChange = e => {
+        onMarginChange(e);
+        let value = e.target.value;
+        let newStyle = null;
+        if (!value.toString().length)
+            value = 0;
+        switch (e.target.id) {
+            case 'paddingTop':
+                setTop(e.target.value + 'px')
+                break;
+            case 'paddingLeft':
+                setLeft(e.target.value + 'px')
+                break;
+            case 'paddingRight':
+                setRight(e.target.value + 'px')
+                break;
+            case 'paddingBottom':
+                setBottom(e.target.value + 'px')
+                break;
+            default:
+                break;
+        }
+    }
     return (
         <>
             <Col>Margin</Col>
@@ -18,12 +46,12 @@ export default function Margin({ onMarginChange, value }) {
                                     className="paddingInput"
                                     id='marginTop'
                                     type='number'
-                                    onChange={onMarginChange}
+                                    onChange={handleMarginChange}
                                     value={
-                                        (value.marginTop && Number.parseInt(value.marginTop) !== 0) ? Number.parseInt(value.marginTop) : ""
+                                        (top && Number.parseInt(top) !== 0) ? Number.parseInt(top) : ""
                                     }
                                     placeholder={
-                                        (value.marginTop && Number.parseInt(value.marginTop) !== 0) ? null : 0
+                                        (top && Number.parseInt(top) !== 0) ? null : 0
                                     }
                                 />
                             </Col>
@@ -46,12 +74,12 @@ export default function Margin({ onMarginChange, value }) {
                                     className="paddingInput"
                                     id='marginLeft'
                                     type='number'
-                                    onChange={onMarginChange}
+                                    onChange={handleMarginChange}
                                     value={
-                                        (value.marginLeft && Number.parseInt(value.marginLeft) !== 0) ? Number.parseInt(value.marginLeft) : ""
+                                        (left && Number.parseInt(left) !== 0) ? Number.parseInt(left) : ""
                                     }
                                     placeholder={
-                                        (value.marginLeft && Number.parseInt(value.marginLeft) !== 0) ? null : 0
+                                        (left && Number.parseInt(left) !== 0) ? null : 0
                                     }
                                 />
                             </Col>
@@ -73,12 +101,12 @@ export default function Margin({ onMarginChange, value }) {
                                     className="paddingInput"
                                     id='marginRight'
                                     type='number'
-                                    onChange={onMarginChange}
+                                    onChange={handleMarginChange}
                                     value={
-                                        (value.marginRight && Number.parseInt(value.marginRight) !== 0) ? Number.parseInt(value.marginRight) : ""
+                                        (right && Number.parseInt(right) !== 0) ? Number.parseInt(right) : ""
                                     }
                                     placeholder={
-                                        (value.marginRight && Number.parseInt(value.marginRight) !== 0) ? null : 0
+                                        (right && Number.parseInt(right) !== 0) ? null : 0
                                     }
                                 />
                             </Col>
@@ -101,12 +129,12 @@ export default function Margin({ onMarginChange, value }) {
                                     className="paddingInput"
                                     id='marginBottom'
                                     type='number'
-                                    onChange={onMarginChange}
+                                    onChange={handleMarginChange}
                                     value={
-                                        (value.marginBottom && Number.parseInt(value.marginBottom) !== 0) ? Number.parseInt(value.marginBottom) : ""
+                                        (bottom && Number.parseInt(bottom) !== 0) ? Number.parseInt(bottom) : ""
                                     }
                                     placeholder={
-                                        (value.marginBottom && Number.parseInt(value.marginBottom) !== 0) ? null : 0
+                                        (bottom && Number.parseInt(bottom) !== 0) ? null : 0
                                     }
                                 />
                             </Col>

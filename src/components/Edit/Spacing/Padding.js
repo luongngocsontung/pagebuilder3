@@ -1,7 +1,37 @@
 import { Col, Layout, Row } from 'antd'
+import { useState } from 'react/cjs/react.development'
 import './Padding.css'
 
 export default function Padding({ onPaddingChange, value }) {
+    const [top, setTop] = useState(value.paddingTop);
+    const [left, setLeft] = useState(value.paddingLeft);
+    const [right, setRight] = useState(value.paddingRight);
+    const [bottom, setBottom] = useState(value.paddingBottom);
+
+    const handlePaddingChange = e => {
+        onPaddingChange(e);
+        let value = e.target.value;
+        let newStyle = null;
+        if (!value.toString().length)
+            value = 0;
+        switch (e.target.id) {
+            case 'paddingTop':
+                setTop(e.target.value+'px')
+                break;
+            case 'paddingLeft':
+                setLeft(e.target.value+'px')
+                break;
+            case 'paddingRight':
+                setRight(e.target.value+'px')
+                break;
+            case 'paddingBottom':
+                setBottom(e.target.value+'px')
+                break;
+            default:
+                break;
+        }
+    }
+
     return (
         <>
             <Col>Padding</Col>
@@ -17,12 +47,12 @@ export default function Padding({ onPaddingChange, value }) {
                                     className="paddingInput"
                                     id='paddingTop'
                                     type='number'
-                                    onChange={onPaddingChange}
+                                    onChange={handlePaddingChange}
                                     value={
-                                        (value.paddingTop && Number.parseInt(value.paddingTop) !== 0) ? Number.parseInt(value.paddingTop) : ""
+                                        (top && Number.parseInt(top) !== 0) ? Number.parseInt(top) : ""
                                     }
                                     placeholder={
-                                        (value.paddingTop && Number.parseInt(value.paddingTop) !== 0) ? null : 0
+                                        (top && Number.parseInt(top) !== 0) ? null : 0
                                     }
                                 />
                             </Col>
@@ -45,12 +75,12 @@ export default function Padding({ onPaddingChange, value }) {
                                     className="paddingInput"
                                     id='paddingLeft'
                                     type='number'
-                                    onChange={onPaddingChange}
+                                    onChange={handlePaddingChange}
                                     value={
-                                        (value.paddingLeft && Number.parseInt(value.paddingLeft) !== 0) ? Number.parseInt(value.paddingLeft) : ""
+                                        (left && Number.parseInt(left) !== 0) ? Number.parseInt(left) : ""
                                     }
                                     placeholder={
-                                        (value.paddingLeft && Number.parseInt(value.paddingLeft) !== 0) ? null : 0
+                                        (left && Number.parseInt(left) !== 0) ? null : 0
                                     }
                                 />
                             </Col>
@@ -72,12 +102,12 @@ export default function Padding({ onPaddingChange, value }) {
                                     className="paddingInput"
                                     id='paddingRight'
                                     type='number'
-                                    onChange={onPaddingChange}
+                                    onChange={handlePaddingChange}
                                     value={
-                                        (value.paddingRight && Number.parseInt(value.paddingRight) !== 0) ? Number.parseInt(value.paddingRight) : ""
+                                        (right && Number.parseInt(right) !== 0) ? Number.parseInt(right) : ""
                                     }
                                     placeholder={
-                                        (value.paddingRight && Number.parseInt(value.paddingRight) !== 0) ? null : 0
+                                        (right && Number.parseInt(right) !== 0) ? null : 0
                                     }
                                 />
                             </Col>
@@ -100,12 +130,12 @@ export default function Padding({ onPaddingChange, value }) {
                                     className="paddingInput"
                                     id='paddingBottom'
                                     type='number'
-                                    onChange={onPaddingChange}
+                                    onChange={handlePaddingChange}
                                     value={
-                                        (value.paddingBottom && Number.parseInt(value.paddingBottom) !== 0) ? Number.parseInt(value.paddingBottom) : ""
+                                        (bottom && Number.parseInt(bottom) !== 0) ? Number.parseInt(bottom) : ""
                                     }
                                     placeholder={
-                                        (value.paddingBottom && Number.parseInt(value.paddingBottom) !== 0) ? null : 0
+                                        (bottom && Number.parseInt(bottom) !== 0) ? null : 0
                                     }
                                 />
                             </Col>
