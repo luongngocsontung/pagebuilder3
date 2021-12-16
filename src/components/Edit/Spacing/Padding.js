@@ -34,6 +34,7 @@ export default function Padding({ element }) {
             default:
                 break;
         }
+        
         element.updateState({ style: newStyle });
     }
 

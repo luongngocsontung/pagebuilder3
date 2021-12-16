@@ -1,0 +1,7 @@
+*{
+    transition: padding 300ms, margin 300ms;
+}
+
+.button{
+    background-color: white;
+}

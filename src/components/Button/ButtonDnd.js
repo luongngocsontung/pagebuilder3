@@ -1,8 +1,9 @@
-import { Button } from "antd";
+import './ButtonDnd.css';
 
 export default function ButtonDnd({ data, ...props }) {
     return (
-        <Button
+        <button
+            className="button"
             style={data.style}
             draggable
             {...props}
@@ -10,7 +11,6 @@ export default function ButtonDnd({ data, ...props }) {
             <span style={{pointerEvents: 'none'}}>
                 {props.value}
             </span>
-            {props.children}
-        </Button>
+        </button>
     )
 }
