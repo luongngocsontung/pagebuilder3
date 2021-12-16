@@ -1,10 +1,8 @@
 import { Col, Layout, Row } from 'antd'
 import { useState } from 'react/cjs/react.development';
-import getElement from '../../../controller/getElement';
 import './Padding.css';
 
-export default function Margin({ id }) {
-    const element = getElement(id);
+export default function Margin({ element }) {
     const [top, setTop] = useState(element.state.style.marginTop);
     const [left, setLeft] = useState(element.state.style.marginLeft);
     const [right, setRight] = useState(element.state.style.marginRight);

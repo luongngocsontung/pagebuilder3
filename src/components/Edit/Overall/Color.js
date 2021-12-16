@@ -1,9 +1,7 @@
 import { Col, Input } from 'antd'
 import { useState } from 'react/cjs/react.development'
-import getElement from '../../../controller/getElement';
 
-export default function Color({ id }) {
-    const element = getElement(id);
+export default function Color({ element }) {
     const [color, setColor] = useState(element.state.style.color);
 
     const handleColorChange = e => {

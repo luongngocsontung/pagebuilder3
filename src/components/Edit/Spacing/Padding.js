@@ -1,10 +1,8 @@
 import { Col, Layout, Row } from 'antd'
 import { useState } from 'react/cjs/react.development'
-import getElement from '../../../controller/getElement';
 import './Padding.css'
 
-export default function Padding({ id }) {
-    const element = getElement(id);
+export default function Padding({ element }) {
     const [top, setTop] = useState(element.state.style.paddingTop);
     const [left, setLeft] = useState(element.state.style.paddingLeft);
     const [right, setRight] = useState(element.state.style.paddingRight);

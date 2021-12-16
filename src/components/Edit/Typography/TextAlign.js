@@ -1,11 +1,8 @@
 import { Button, Col, Row } from 'antd'
 import { AlignLeftOutlined, AlignCenterOutlined, AlignRightOutlined, MenuOutlined } from '@ant-design/icons'
 import React from 'react'
-import getElement from '../../../controller/getElement'
 
-export default function TextAlign({ id }) {
-    const element = getElement(id);
-
+export default function TextAlign({ element }) {
     const onTextAlignChange = e => {
         const newStyle = { ...element.state.style, textAlign: e.target.id };
         element.updateState({ style: newStyle });
